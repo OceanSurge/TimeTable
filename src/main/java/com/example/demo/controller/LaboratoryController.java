@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.example.demo.pojo.Laboratory;
 import com.example.demo.service.LaboratoryService;
+import com.example.demo.service.TimeTableService;
 import com.example.demo.utils.ResultVO;
 import com.example.demo.utils.UploadImgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,16 @@ public class LaboratoryController {
 	@PostMapping("/updateLaboratory")
 	public ResultVO updateLaboratory(@RequestBody Laboratory laboratory) {
 		Boolean aBoolean = laboratoryService.updateLaboratory(laboratory);
+		if (aBoolean) {
+			return ResultVO.builder().code(200).message("success").build();
+		} else {
+			return ResultVO.builder().code(500).message("error").build();
+		}
+	}
+
+	@RequestMapping("/removeLaboratory")
+	public ResultVO removeLaboratory(@RequestParam("id") int id) {
+		Boolean aBoolean = laboratoryService.removeLaboratory(id);
 		if (aBoolean) {
 			return ResultVO.builder().code(200).message("success").build();
 		} else {

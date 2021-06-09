@@ -26,31 +26,31 @@ import java.util.stream.Stream;
 @SpringBootTest
 @Rollback(value = false)
 class DemoApplicationTests {
-//
-//	@Autowired
-//	AdminMapper adminMapper;
-//
-//	@Autowired
-//	LoginService loginService;
-//
-//	@Autowired
-//	TeacherMapper teacherMapper;
-//
-//	@Autowired
-//	TimeTableMapper timeTableMapper;
-//
-//	@Autowired
-//	LaboratoryMapper laboratoryMapper;
-//
-//	@Autowired
-//	LaboratoryService laboratoryService;
-//
-//	@Autowired
-//	CourseMapper courseMapper;
-//
-//	@Autowired
-//	CourseService courseService;
-//
+
+	@Autowired
+	AdminMapper adminMapper;
+
+	@Autowired
+	LoginService loginService;
+
+	@Autowired
+	TeacherMapper teacherMapper;
+
+	@Autowired
+	TimeTableMapper timeTableMapper;
+
+	@Autowired
+	LaboratoryMapper laboratoryMapper;
+
+	@Autowired
+	LaboratoryService laboratoryService;
+
+	@Autowired
+	CourseMapper courseMapper;
+
+	@Autowired
+	CourseService courseService;
+
 //
 //	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 //	private LocalDateTime localDateTime = LocalDateTime.now();
@@ -288,5 +288,18 @@ class DemoApplicationTests {
 //		map.put("courseName", timetableList);
 //		System.out.println(map.size());
 //	}
+
+	@Test
+	void test7() {
+//		QueryWrapper<Laboratory> laboratoryQueryWrapper = new QueryWrapper<>();
+//		laboratoryQueryWrapper.eq("id",13);
+//		Laboratory laboratory = laboratoryMapper.selectOne(laboratoryQueryWrapper);
+//		System.out.println(laboratory);
+//		laboratoryMapper.deleteById(14);
+		QueryWrapper<Laboratory> laboratoryQueryWrapper = new QueryWrapper<>();
+		laboratoryQueryWrapper.eq("id", 15);
+		laboratoryMapper.delete(laboratoryQueryWrapper);
+	}
+
 
 }

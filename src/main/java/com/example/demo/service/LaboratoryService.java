@@ -9,8 +9,13 @@ import java.util.List;
 
 
 public interface LaboratoryService {
-	public HashMap<String,Object> getAllLaboratory();
+	public HashMap<String, Object> getAllLaboratory();
+
 	public Boolean updateLaboratory(Laboratory laboratory);
+
 	public Boolean addLaboratory(Laboratory laboratory);
+
 	public Laboratory getIdByName(String name);
+
+	public Boolean removeLaboratory(int id);
 }

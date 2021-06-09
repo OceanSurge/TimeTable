@@ -12,4 +12,6 @@ public interface TimeTableMapper extends BaseMapper<Timetable> {
 			"AND week_day = #{weekDay} AND lesson = #{lesson} AND laboratory_id=#{laboratoryId}")
 	public void updateTimeTable(Timetable timetable);
 
+
+
 }

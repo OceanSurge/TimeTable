@@ -49,7 +49,7 @@ public class LaboratoryServiceImpl implements LaboratoryService {
 
 		int insert = laboratoryMapper.insert(laboratory);
 		QueryWrapper<Laboratory> laboratoryQueryWrapper = new QueryWrapper<>();
-		laboratoryQueryWrapper.eq("laboratory_name",laboratory.getLaboratoryName());
+		laboratoryQueryWrapper.eq("laboratory_name", laboratory.getLaboratoryName());
 		Laboratory laboratory1 = laboratoryMapper.selectOne(laboratoryQueryWrapper);
 		int size = laboratoryMapper.selectList(null).size();
 		int z = 1 + (size - 1) * 630;
@@ -76,5 +76,23 @@ public class LaboratoryServiceImpl implements LaboratoryService {
 		laboratoryQueryWrapper.eq("laboratory_name", name);
 		Laboratory laboratory = laboratoryMapper.selectOne(laboratoryQueryWrapper);
 		return laboratory;
+	}
+
+	@Override
+	public Boolean removeLaboratory(int id) {
+		QueryWrapper<Timetable> timeTableQueryWrapper = new QueryWrapper<Timetable>();
+		timeTableQueryWrapper.eq("laboratory_id", 13)
+				.isNotNull("course_name");
+		List<Timetable> timetableList = timeTableMapper.selectList(timeTableQueryWrapper);
+//		laboratoryMapper.selectOne()
+		if (timetableList.size() == 0) {
+			laboratoryMapper.deleteById(id);
+			QueryWrapper<Timetable> wrapper = new QueryWrapper<>();
+			wrapper.eq("laboratory_id", id);
+			timeTableMapper.delete(wrapper);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
